@@ -15,6 +15,8 @@ class GoalsVC: UIViewController {
     
     @IBOutlet weak var goalsTableView: UITableView!
     
+    var goals: [Goal] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         goalsTableView.delegate = self
@@ -23,13 +25,27 @@ class GoalsVC: UIViewController {
         goalsTableView.isHidden = false
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.fetchData { (complete) in
+            if complete {
+                if goals.count > 0 {
+                    goalsTableView.isHidden = false
+                } else {
+                    goalsTableView.isHidden = true
+                }
+            }
+        }
+        goalsTableView.reloadData()
+    }
 
     // MARK: Actions
     
     @IBAction func addGoalButtonPressed(_ sender: Any) {
     }
     
-
 }
 
 extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
@@ -38,15 +54,32 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return goals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GoalCell") as? GoalCell else { return UITableViewCell() }
-        cell.configureCell(description: "Eat salad forever", type: .longTerm, goalProgressAmount: 5)
+        let goal = goals[indexPath.row]
+        cell.configureCell(goal: goal)
         return cell
     }
     
     
+}
+
+extension GoalsVC {
+    func fetchData(completion: (_ complete: Bool) -> ()) {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+        
+        do {
+            goals = try managedContext.fetch(fetchRequest)
+            completion(true)
+        } catch {
+            debugPrint("Could not fetch: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
 }
 
