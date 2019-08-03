@@ -47,7 +47,9 @@ class CreateGoalVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func createGoalButtonPressed(_ sender: Any) {
         if goalTextField.text != "" && pointsTextField.text != "" && Int(pointsTextField.text!)! > 0 {
-            print("goal created")
+            self.save { (complete) in
+                dismiss(animated: true, completion: nil)
+            }
         }
     }
     
@@ -55,5 +57,23 @@ class CreateGoalVC: UIViewController, UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-
+    func save(completion: (_ finished: Bool) -> ()) {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        let goal = Goal(context: managedContext)
+        
+        goal.goalDescription = goalTextField.text
+        goal.goalType = goalType.rawValue
+        goal.goalCompletionValue = Int32(pointsTextField.text!)!
+        goal.goalProgress = Int32(0)
+        
+        do {
+            try managedContext.save()
+            print("successfully saved")
+            completion(true)
+        } catch {
+            debugPrint("Could not save: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+    
 }
