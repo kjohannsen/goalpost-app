@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5C15ACF422EE3BC8006697DF /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15ACF322EE3BC8006697DF /* GoalType.swift */; };
 		5C15ACF622EE43C0006697DF /* CreateGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15ACF522EE43C0006697DF /* CreateGoalVC.swift */; };
+		5C3CF58A22F60A9C0050C802 /* UIButtonExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3CF58922F60A9C0050C802 /* UIButtonExt.swift */; };
 		5C692C3522ECC5C000E2AADC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C692C3422ECC5C000E2AADC /* AppDelegate.swift */; };
 		5C692C3722ECC5C000E2AADC /* GoalsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C692C3622ECC5C000E2AADC /* GoalsVC.swift */; };
 		5C692C3A22ECC5C000E2AADC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C692C3822ECC5C000E2AADC /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		5C15ACF322EE3BC8006697DF /* GoalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalType.swift; sourceTree = "<group>"; };
 		5C15ACF522EE43C0006697DF /* CreateGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalVC.swift; sourceTree = "<group>"; };
+		5C3CF58922F60A9C0050C802 /* UIButtonExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExt.swift; sourceTree = "<group>"; };
 		5C692C3122ECC5C000E2AADC /* goalpost-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "goalpost-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C692C3422ECC5C000E2AADC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C692C3622ECC5C000E2AADC /* GoalsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsVC.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		5C692C4C22ECC9EC00E2AADC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5C3CF58922F60A9C0050C802 /* UIButtonExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				5C15ACF422EE3BC8006697DF /* GoalType.swift in Sources */,
 				5C692C3722ECC5C000E2AADC /* GoalsVC.swift in Sources */,
 				5C692C3522ECC5C000E2AADC /* AppDelegate.swift in Sources */,
+				5C3CF58A22F60A9C0050C802 /* UIButtonExt.swift in Sources */,
 				5C692C3D22ECC5C000E2AADC /* goalpost_app.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
